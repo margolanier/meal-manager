@@ -1,0 +1,52 @@
+/*
+    Groceries Mobile App
+    Style Sheet
+*/
+
+.center{
+    text-align:center;
+}
+
+.extra-top-padding{
+    padding-top: 20px;
+}
+
+#fixed-to-bottom{
+    bottom: 0;
+    margin-bottom: 0;
+    position: fixed;
+}
+
+#home-pg-buttons{
+    text-align: center;
+}
+
+#home-pg-buttons > .button{
+    margin: 15px;
+    width: 65%;
+}
+
+.inner-wrap{
+    height: 100%;
+}
+
+.no-padding{
+    padding: 0;
+}
+
+.off-canvas-wrap{
+    height: 100%;
+}
+
+p{
+    line-height: 1.3em;
+}
+
+#title{
+    padding: 15px;
+    text-align: center;
+}
+
+.ui-mobile .ui-page-active {
+    height: 100%;
+}
