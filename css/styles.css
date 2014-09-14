@@ -25,6 +25,10 @@ h1, a{
     color: #9f1212;
 }
 
+button:hover, button:active .button:hover, .button:active{
+    opacity: 1;
+}
+
 .extra-top-padding{
     padding-top: 20px;
 }
@@ -43,7 +47,7 @@ h1, a{
     margin: 15px;
     width: 65%;
     background: #9f1212;
-    color: #f5ceab;
+    color: #CFB68C;
     opacity: 0.8;
 }
 
@@ -53,15 +57,27 @@ h1, a{
 }
 
 .icon-bar > * i {
-    color: #f5ceab;
+    color: #CFB68C;
 }
 
 .icon-bar > * label {
-    color: #f5ceab;
+    color: #CFB68C;
 }
 
 .inner-wrap{
     height: 100%;
+}
+
+.left-off-canvas-menu{
+    background: #CFB68C;
+}
+
+.move-left .exit-off-canvas {
+    box-shadow: -4px 0 4px #8F7D60, 4px 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.move-right .exit-off-canvas {
+    box-shadow: -4px 0 4px #8F7D60, 4px 0 4px rgba(0, 0, 0, 0.5);
 }
 
 .no-padding{
@@ -76,6 +92,11 @@ p{
     line-height: 1.3em;
 }
 
+
+.right-off-canvas-menu{
+    background: #CFB68C;
+}
+
 #title{
     padding: 15px;
     text-align: center;
@@ -84,3 +105,20 @@ p{
 .ui-mobile .ui-page-active {
     height: 100%;
 }
+
+ul.off-canvas-list{
+}
+
+ul.off-canvas-list li{
+    background: #B59F7A;
+}
+
+ul.off-canvas-list li a{
+    border-bottom-color: #8F7D60;
+}
+
+ul.off-canvas-list li label{
+    background: #8F7D60;
+    color: white;
+}
+
