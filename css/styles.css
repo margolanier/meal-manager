@@ -1,10 +1,28 @@
 /*
-    Groceries Mobile App
-    Style Sheet
+    Meal Manager
+    Mobile App Style Sheet
 */
 
-.center{
-    text-align:center;
+@font-face {
+    font-family: 'nobile';
+    src: url('fonts/Nobile/Nobile-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background-image: url("../img/cuttingboard.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-family: 'nobile', Tahoma, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, button, .button{
+    font-family: 'nobile', Tahoma, Arial, sans-serif;
+}
+
+h1, a{
+    color: #9f1212;
 }
 
 .extra-top-padding{
@@ -24,6 +42,22 @@
 #home-pg-buttons > .button{
     margin: 15px;
     width: 65%;
+    background: #9f1212;
+    color: #f5ceab;
+    opacity: 0.8;
+}
+
+.icon-bar{
+    background: #9f1212;
+    opacity: 0.8;
+}
+
+.icon-bar > * i {
+    color: #f5ceab;
+}
+
+.icon-bar > * label {
+    color: #f5ceab;
 }
 
 .inner-wrap{
