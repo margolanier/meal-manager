@@ -1,0 +1,150 @@
+
+<?php if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') { ?>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search All Recipes</title>
+    
+    <!-- Foundation styles -->
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- jQuery Mobile styles -->
+    <link rel="stylesheet" href="css/themes-default-jquery.mobile-1.4.4.min.css">
+    <link rel="stylesheet" href="css/jqm-demos.css">
+    
+    <!-- Margo's styles -->
+    <link rel="stylesheet" href="css/styles.css" />
+    
+    <!-- JavaScript from jQuery Mobile -->
+    <script src="js/jquery.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.mobile-1.4.4.min.js"></script>
+    
+    <script>
+	$(function(){
+	    $("[data-role='navbar']").navbar();
+	    $("[data-role='header'], [data-role='footer']").toolbar();
+	});
+    </script>
+</head>
+
+<body>
+    <div data-role="header" data-position="fixed" data-theme="a">
+	    <a href="../index.html" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+        <h1>Search All Recipes</h1>
+    </div><!-- /header -->
+    
+    <div data-role="page" data-title="Search All Recipes">
+	<div class="ui-content" role="main">
+	    <ul data-role="listview" data-theme="a" data-dividertheme="e" data-filter="true" data-filter-theme="a" data-filter-placeholder="Search recipes...">
+		<li data-role="list-divider">A</li>
+		<li data-role="list-divider">A</li>
+			<li><a href="#">
+			    <img src="img/album-bb.jpg">
+			    <h4>Adam Kinkaid</h4>
+			</a></li>
+			<li><a href="#">
+			    <img src="img/album-hc.jpg">
+			    <h4>Alex Wickerham</h4>
+			</a></li>
+			<li><a href="#">
+			    <img src="img/album-p.jpg">
+			    <h4>Avery Johnson</h4>
+			</a></li>
+			<li data-role="list-divider">B</li>
+			<li><a href="#">
+			    <img src="img/album-ok.jpg">
+			    <h4>Bob Cabot</h4></a></li>
+			<li data-role="list-divider">C</li>
+			<li><a href="#">
+			    <img src="img/album-ws.jpg">
+			    <h4>Caleb Booth</h4>
+			</a></li>
+			<li><a href="#">
+			    <img src="img/album-rh.jpg">
+			    <h4>Christopher Adams</h4>
+			</a></li>
+			<li><a href="#">
+			    <img src="img/album-xx.jpg">
+			    <h4>Culver James</h4>
+			</a></li>
+		<li data-role="list-divider">D</li>
+		<li><a href="#">David Walsh</a></li>
+		<li><a href="#">Drake Alfred</a></li>
+		<li data-role="list-divider">E</li>
+		<li><a href="#">Elizabeth Bacon</a></li>
+		<li><a href="#">Emery Parker</a></li>
+		<li><a href="#">Enid Voldon</a></li>
+		<li data-role="list-divider">F</li>
+		<li><a href="#">Francis Wall</a></li>
+		<li data-role="list-divider">G</li>
+		<li><a href="#">Graham Smith</a></li>
+		<li><a href="#">Greta Peete</a></li>
+		<li data-role="list-divider">H</li>
+		<li><a href="#">Harvey Walls</a></li>
+		<li data-role="list-divider">M</li>
+		<li><a href="#">Mike Farnsworth</a></li>
+		<li><a href="#">Murray Vanderbuilt</a></li>
+		<li data-role="list-divider">N</li>
+		<li><a href="#">Nathan Williams</a></li>
+		<li data-role="list-divider">P</li>
+		<li><a href="#">Paul Baker</a></li>
+		<li><a href="#">Pete Mason</a></li>
+		<li data-role="list-divider">R</li>
+		<li><a href="#">Rod Tarker</a></li>
+		<li data-role="list-divider">S</li>
+		<li><a href="#">Sawyer Wakefield</a></li>
+	    </ul>
+	</div><!-- /content -->
+    </div><!-- /page -->
+
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="searchAllRecipes.html" data-prefetch="true" data-transition="flip">New Recipes</a></li>
+				<li><a href="page-c.html" data-prefetch="true" data-transition="turn">My Cookbook</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+	
+    <!-- JavaScript from Foundation -->
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/foundation/foundation.magellan.js"></script>
+  
+    <script>
+      $(document).foundation({
+        magellan : {
+          active_class: 'active',
+          threshold: 0
+        }
+      });
+      
+      // Update the contents of the toolbars
+      $( document ).on( "pagecontainerchange", function() {
+	// Each of the four pages in this demo has a data-title attribute
+	// which value is equal to the text of the nav button
+	// For example, on first page: <div data-role="page" data-title="Info">
+	var current = $( ".ui-page-active" ).jqmData( "title" );
+	
+	// Change the heading
+	$( "[data-role='header'] h1" ).text( current );
+	
+	// Remove active class from nav buttons
+	$( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
+	
+	// Add active class to current nav button
+	$( "[data-role='navbar'] a" ).each(function() {
+	  if ( $( this ).text() === current ) {
+	    $( this ).addClass( "ui-btn-active" );
+	  }
+	});
+      });
+      
+    </script>
+</body>
+</html>
+<?php } ?>
