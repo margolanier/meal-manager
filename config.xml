@@ -47,8 +47,16 @@
 		<preference name="disable-cursor" value="false" />
 		<gap:platform name="ios" />
 		<gap:platform name="android" />
-		<feature name="http://api.phonegap.com/1.0/camera"/>
-		<feature name="http://api.phonegap.com/1.0/contacts"/>
+		
+                <!-- Camera -->
+                <feature name="Camera">
+                  <param name="ios-package" value="CDVCamera" />
+                </feature>
+                <feature name="Camera">
+                  <param name="android-package" value="org.apache.cordova.CameraLauncher" />
+                </feature>
+		
+                <feature name="http://api.phonegap.com/1.0/contacts"/>
 		<feature name="http://api.phonegap.com/1.0/file"/>
 		<feature name="http://api.phonegap.com/1.0/geolocation"/>
 		<feature name="http://api.phonegap.com/1.0/media"/>

@@ -47,6 +47,7 @@ a:hover, a:focus {
     margin: 15px;
     background: #9f1212;
     color: #CFB68C;
+    display: inline-block;
 }
 
 .icon-bar{
@@ -54,7 +55,8 @@ a:hover, a:focus {
 }
 
 .icon-bar > * {
-    padding: 5px;
+    padding: 10px;
+    padding-top: 20px;
 }
 
 .icon-bar > * i {
