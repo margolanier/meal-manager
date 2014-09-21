@@ -44,7 +44,7 @@
 	<!-- hidden side menus -->
 	<aside class="left-off-canvas-menu">
 	  <ul class="off-canvas-list">
-	    <li><label>Find New Recipes</label></li>
+	    <li><label class="off-canvas-padding">Find New Recipes</label></li>
 	    <li><a href="searchAllRecipes.html">Search All Recipes</a></li>
 	    <li><a href="#">Browse Popular Recipes</a></li>
 	    <li><a href="fridge.html">Ingredients in Fridge</a></li>
@@ -57,7 +57,7 @@
 	
 	<aside class="right-off-canvas-menu">
 	  <ul class="off-canvas-list">
-	    <li><label>Manage Groceries</label></li>
+	    <li class="off-canvas-padding"><label>Manage Groceries</label></li>
 	    <li><a href="#">Edit Lists</a></li>
 	    <li><a href="#">Sync with Family</a></li>
 	    <li><label>Shopping Cart</label></li>
@@ -76,16 +76,18 @@
 	  </div>
 	  
 	  <div id="home-pg-buttons" class="row">
-	    <a href="searchAllRecipes.html" class="button small-6 columns">
-	      <i class="fa fa-book fa-2x"></i>
-	      <br>Browse
-	      <br>Recipes
-	    </a>
-	    <a href="#" class="button small-6 columns">
-	      <i class="fa fa-shopping-cart fa-2x"></i>
-	      <br>Manage
-	      <br>Groceries
-	    </a>
+	    <div class="small-6 columns">
+	      <a href="searchAllRecipes.html" class="button">
+		<i class="fa fa-book fa-2x"></i>
+		<br>Browse Recipes
+	      </a>
+	  </div>
+	  <div class="small-6 columns">
+	      <a href="searchAllRecipes.html" class="button">
+		<i class="fa fa-shopping-cart fa-2x"></i>
+		<br>Manage Groceries
+	      </a>
+	  </div>
 	    <button onclick="launchCamera();">Launch Camera</button>
 	  </div>
 	  
