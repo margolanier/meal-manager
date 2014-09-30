@@ -1,117 +1,100 @@
 
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meal Manager</title>
-    
-    <!-- Style sheets -->
-    <link rel="stylesheet" href="css/foundation.css" />
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/styles.css" />
-    
-  </head>
-  <body>
-    
-    <!-- fixed nav bar -->
-    <div class="off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
-	<div class="icon-bar four-up">
-	    <a class="left-off-canvas-toggle item" href="#">
-	      <span>
-		<i class="fa fa-book"></i>
-		<label>Recipes</label>
-	      </span>
-	    </a>
-	    <a class="item">
-	      <i class="fa fa-scissors"></i>
-	      <label>Coupons</label>
-	    </a>
-	    <a class="item">
-	      <i class="fa fa-list-ul"></i>
-	      <label>Lists</label>
-	    </a>
-	    <a class="right-off-canvas-toggle item" href="#">
-	      <span>
-		<i class="fa fa-shopping-cart"></i>
-	      <label>Groceries</label>
-	      </span>
-	    </a>
-	</div>
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Persistent toolbars - jQuery Mobile Demos</title>
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="css/themes-default-jquery.mobile-1.4.4.min.css">
+	<link rel="stylesheet" href="css/jqm-demos.css">
+	<link rel="stylesheet" href="css/foundation.css" />
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css" />
 	
-	<!-- hidden side menus -->
-	<aside class="left-off-canvas-menu">
-	  <ul class="off-canvas-list">
-	    <li><label class="off-canvas-padding">Find New Recipes</label></li>
-	    <li><a href="searchAllRecipes.html">Search All Recipes</a></li>
-	    <li><a href="#">Browse Popular Recipes</a></li>
-	    <li><a href="fridge.html">Ingredients in Fridge</a></li>
-	    <li><label>My Cookbook</label></li>
-	    <li><a href="favorites.html">Favorites</a></li>
-	    <li><a href="#">Active Recipes</a></li>
-	    <li><a href="#">Convert for Serving Size</a></li>
-	  </ul>
-	</aside>
+	<!-- JavaScript files -->
+	<script src="js/main.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/jquery.mobile-1.4.4.min.js"></script>
 	
-	<aside class="right-off-canvas-menu">
-	  <ul class="off-canvas-list">
-	    <li class="off-canvas-padding"><label>Manage Groceries</label></li>
-	    <li><a href="#">Edit Lists</a></li>
-	    <li><a href="#">Sync with Family</a></li>
-	    <li><label>Shopping Cart</label></li>
-	    <li><a href="#">Send List to Store</a></li>
-	    <li><a href="#">Categorize List</a></li>
-	  </ul>
-	</aside>
+	<script>
+	  $(document).foundation({
+	    magellan : {
+	      active_class: 'active',
+	      threshold: 0
+	    }
+	  });
+	</script>
 	
-	<!-- begin MAIN PAGE CONTENT -->
-	<section class="main-section">
-	  
-	  <div id="title">
-	    <h1>Meal Manager</h1>
-	    <h4>Find new recipes and have your grocery list sent to the store. </h4>
-	    <img src="img/fork.png" style="height: 70px;" />
-	  </div>
-	  
-	  <div id="home-pg-buttons" class="row">
-	    <div class="small-6 columns">
-	      <a href="searchAllRecipes.html" class="button">
-		<i class="fa fa-book fa-2x"></i>
-		<br>Browse Recipes
-	      </a>
-	  </div>
-	  <div class="small-6 columns">
-	      <a href="searchAllRecipes.html" class="button">
-		<i class="fa fa-shopping-cart fa-2x"></i>
-		<br>Manage Groceries
-	      </a>
-	  </div>
-	    <button onclick="launchCamera();">Launch Camera</button>
-	  </div>
-	  
-	</section>
-	<!-- end MAIN PAGE CONTENT -->
-	
-	<a class="exit-off-canvas"></a>
-	
-      </div> <!-- end .inner-wrap -->
-    </div> <!-- end. off-canvas-wrap -->
-    
-    <!-- JavaScript files -->
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/modernizr.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script src="js/foundation/foundation.magellan.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-      $(document).foundation({
-        magellan : {
-          active_class: 'active',
-          threshold: 0
-        }
-      });
-    </script>
-  </body>
+	<script>
+		$(function() {
+			$( "[data-role='navbar']" ).navbar();
+			$( "[data-role='header'], [data-role='footer']" ).toolbar();
+		});
+		// Update the contents of the toolbars
+		$( document ).on( "pagecontainerchange", function() {
+			// Each of the four pages in this demo has a data-title attribute
+			// which value is equal to the text of the nav button
+			// For example, on first page: <div data-role="page" data-title="Info">
+			var current = $( ".ui-page-active" ).jqmData( "title" );
+			// Change the heading
+			$( "[data-role='header'] h1" ).text( current );
+			// Remove active class from nav buttons
+			$( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
+			// Add active class to current nav button
+			$( "[data-role='navbar'] a" ).each(function() {
+				if ( $( this ).text() === current ) {
+					$( this ).addClass( "ui-btn-active" );
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+    <div data-role="header" data-position="fixed" data-theme="a">
+		<a href="index.html" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+        <h1>Meal Manager</h1>
+    </div><!-- /header -->
+
+	<div data-role="page" data-title="Meal Manager">
+
+	    <div class="ui-content" role="main">
+                <div id="title">
+                    <h1>Meal Manager</h1>
+                    <h4>Find new recipes and have your grocery list sent to the store. </h4>
+                    <img src="img/fork.png" style="height: 70px;" />
+                  </div>
+                  
+                  <div id="home-pg-buttons" class="row">
+                    <div class="small-6 columns">
+                      <a href="recipes.html" class="button">
+                        <i class="fa fa-book fa-2x"></i>
+                        <br>Browse Recipes
+                      </a>
+                  </div>
+                  <div class="small-6 columns">
+                      <a href="list.html" class="button">
+                        <i class="fa fa-shopping-cart fa-2x"></i>
+                        <br>Manage Groceries
+                      </a>
+                  </div>
+                  </div>
+            </div><!-- /content -->
+
+	</div><!-- /page -->
+
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="recipes.html" data-prefetch="true" data-transition="fade">Recipes</a></li> <!-- transition options = fade, flip, turn, slide -->
+				<li><a href="list.html" data-prefetch="true" data-transition="flip">Grocery List</a></li>
+				<li><a href="coupons.html" data-prefetch="true" data-transition="turn">Coupons</a></li>
+				<li><a href="cookbook.html" data-prefetch="true" data-transition="slide">Cookbook</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+
+</body>
 </html>
