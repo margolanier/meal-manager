@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/jqm-demos.css">
 	<link rel="stylesheet" href="css/foundation.css" />
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../dist/idangerous.swiper.css">
 	<link rel="stylesheet" href="css/styles.css" />
 	
 	<!-- JavaScript files -->
@@ -18,6 +19,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/jquery.mobile-1.4.4.min.js"></script>
+	<script src="js/jquery-1.10.1.min.js"></script>
 	
 	<script>
 	  $(document).foundation({
@@ -51,6 +53,24 @@
 			});
 		});
 	</script>
+	
+	<script src="js/idangerous.swiper.min.js"></script>
+	<script>
+	var mySwiper = new Swiper('.swiper-container',{
+	  pagination: '.pagination',
+	  loop:true,
+	  grabCursor: true,
+	  paginationClickable: true
+	})
+	$('.arrow-left').on('click', function(e){
+	  e.preventDefault()
+	  mySwiper.swipePrev()
+	})
+	$('.arrow-right').on('click', function(e){
+	  e.preventDefault()
+	  mySwiper.swipeNext()
+	})
+	</script>
 </head>
 <body>
     <div data-role="header" data-position="fixed" data-theme="a">
@@ -60,13 +80,32 @@
 
 	<div data-role="page" data-title="Meal Manager">
 
-	    <div class="ui-content" role="main">
+	<div class="ui-content" role="main">
                 <div id="title">
                     <h1>Meal Manager</h1>
                     <h4>Find new recipes and have your grocery list sent to the store. </h4>
                     <img src="img/fork.png" style="height: 70px;" />
-                  </div>
-                  
+                </div>
+		
+                <div class="device">
+			<a class="arrow-left" href="#"></a> 
+			<a class="arrow-right" href="#"></a>
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide"> <img src="img/slider1-1.png"> </div>
+					<div class="swiper-slide"> <img src="img/slider1-2.png"> </div>
+					<div class="swiper-slide">
+						<div class="content-slide">
+							<p class="title">Slide with HTML</p>
+							<p>You can put any HTML inside of slide with any layout, not only images, even another Swiper!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pagination"></div>
+		</div>
+		
+		
                   <div id="home-pg-buttons" class="row">
                     <div class="small-6 columns">
                       <a href="recipes.html" class="button">
@@ -81,7 +120,7 @@
                       </a>
                   </div>
                   </div>
-            </div><!-- /content -->
+        </div><!-- /content -->
 
 	</div><!-- /page -->
 
