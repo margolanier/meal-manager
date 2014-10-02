@@ -11,17 +11,10 @@
 }
 
 body{
-    font-family: 'nobile', Tahoma, Arial, sans-serif;
-}
-
-.ui-content{
-    background-image: url("../img/background.jpg");
+    background-image: url("../img/cuttingboard.jpg");
     background-repeat: no-repeat;
-    background-size: 100%; 100%;
-}
-
-.ui-page-theme-a, .ui-overlay{
-    text-shadow: none;
+    background-size: 100% 100%;
+    font-family: 'nobile', Tahoma, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, button, .button{
