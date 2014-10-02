@@ -17,7 +17,7 @@ body{
 .ui-content{
     background-image: url("../img/background.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100%; 100%;
 }
 
 .ui-page-theme-a, .ui-overlay{
