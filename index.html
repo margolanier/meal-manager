@@ -6,28 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Persistent toolbars - jQuery Mobile Demos</title>
 	<link rel="shortcut icon" href="../favicon.ico">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="css/themes-default-jquery.mobile-1.4.4.min.css">
-	<link rel="stylesheet" href="css/jqm-demos.css">
-	<link rel="stylesheet" href="css/foundation.css" />
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css" />
-	
-	<!-- JavaScript files -->
-	<script src="js/main.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/jquery.mobile-1.4.4.min.js"></script>
-	
-	<script>
-	  $(document).foundation({
-	    magellan : {
-	      active_class: 'active',
-	      threshold: 0
-	    }
-	  });
-	</script>
-	
 	<script>
 		$(function() {
 			$( "[data-role='navbar']" ).navbar();
@@ -58,42 +42,28 @@
         <h1>Meal Manager</h1>
     </div><!-- /header -->
 
-	<div data-role="page" data-title="Meal Manager">
+<div data-role="page" data-title="Meal Manager">
 
-	    <div class="ui-content" role="main">
-                <div id="title">
-                    <h1>Meal Manager</h1>
-                    <h4>Find new recipes and have your grocery list sent to the store. </h4>
-                    <img src="img/fork.png" style="height: 70px;" />
-                  </div>
-                  
-                  <div id="home-pg-buttons" class="row">
-                    <div class="small-6 columns">
-                      <a href="recipes.html" class="button">
-                        <i class="fa fa-book fa-2x"></i>
-                        <br>Browse Recipes
-                      </a>
-                  </div>
-                  <div class="small-6 columns">
-                      <a href="list.html" class="button">
-                        <i class="fa fa-shopping-cart fa-2x"></i>
-                        <br>Manage Groceries
-                      </a>
-                  </div>
-                  </div>
-            </div><!-- /content -->
+    <div class="ui-content " role="main">
+	<div id='title'>
+	  <img src="img/fork.png" style="height: 80px;" />
+	  <h4 id="subheading">Browse new recipes and manage your grocery list. </h4>
+	</div>
+    </div>
+
+    </div><!-- /content -->
 
 	</div><!-- /page -->
 
 	<div data-role="footer" data-position="fixed" data-theme="a">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="recipes.html" data-prefetch="true" data-transition="fade">Recipes</a></li> <!-- transition options = fade, flip, turn, slide -->
-				<li><a href="list.html" data-prefetch="true" data-transition="flip">Grocery List</a></li>
-				<li><a href="coupons.html" data-prefetch="true" data-transition="turn">Coupons</a></li>
-				<li><a href="cookbook.html" data-prefetch="true" data-transition="slide">Cookbook</a></li>
-			</ul>
-		</div><!-- /navbar -->
+	  <div data-role="navbar">
+	    <ul>
+	      <li><a href="recipes.html" data-prefetch="true" data-transition="fade"><i class="fa fa-shopping-cart fa-2x"></i></a></li> <!-- transition options = fade, flip, turn, slide -->
+	      <li><a href="list.html" data-prefetch="true" data-transition="flip"><i class="fa fa-list-ul fa-2x"></i></a></li>
+	      <li><a href="coupons.html" data-prefetch="true" data-transition="turn"><i class="fa fa-scissors fa-2x"></i></a></li>
+	      <li><a href="cookbook.html" data-prefetch="true" data-transition="slide"><i class="fa fa-book fa-2x"></i></a></li>
+	    </ul>
+	  </div><!-- /navbar -->
 	</div><!-- /footer -->
 
 </body>

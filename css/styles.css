@@ -11,106 +11,56 @@
 }
 
 body{
-    background-image: url("../img/cuttingboard.jpg");
+    font-family: 'nobile', Tahoma, Arial, sans-serif;
+}
+
+.ui-page{
+    background-image: url("../img/background.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    font-family: 'nobile', Tahoma, Arial, sans-serif;
+}
+
+.ui-content{
+    min-height: 440px;
+}
+
+.ui-page-theme-a, .ui-overlay{
+    text-shadow: none;
+}
+
+.inner-pg-bg{
+    background-color: #f6f6f6;
+}
+
+.ui-input-search{
+    margin-top: -7px;
 }
 
 h1, h2, h3, h4, h5, button, .button{
     font-family: 'nobile', Tahoma, Arial, sans-serif;
 }
 
-h1, a{
+a{
     color: #9f1212;
-}
-
-a:hover, a:focus {
-    background: #8f0202;
-}
-
-.extra-top-padding{
-    padding-top: 20px;
-}
-
-#fixed-to-bottom{
-    bottom: 0;
-    margin-bottom: 0;
-    position: fixed;
-}
-
-#home-pg-buttons{
-    text-align: center;
-}
-
-#home-pg-buttons > .button{
-    margin: 15px;
-    background: #9f1212;
-    color: #CFB68C;
-    display: inline-block;
-}
-
-.icon-bar{
-    background: #9f1212;
-}
-
-.icon-bar > * {
-    padding: 10px;
-    padding-top: 25px;
-}
-
-.icon-bar > * i {
-    color: #CFB68C;
-}
-
-.icon-bar > *:hover {
-    background: #8f0202;
-}
-
-.icon-bar > * label {
-    color: #CFB68C;
-}
-
-.inner-wrap{
-    height: 100%;
-}
-
-.left-off-canvas-menu{
-    background: #CFB68C;
-}
-
-.move-left .exit-off-canvas {
-    box-shadow: -4px 0 4px #8F7D60, 4px 0 4px rgba(0, 0, 0, 0.5);
-}
-
-.move-right .exit-off-canvas {
-    box-shadow: -4px 0 4px #8F7D60, 4px 0 4px rgba(0, 0, 0, 0.5);
-}
-
-.no-padding{
-    padding: 0;
-}
-
-.off-canvas-padding{
-    padding-top: 25px;
-}
-
-.off-canvas-wrap{
-    height: 100%;
 }
 
 p{
     line-height: 1.3em;
 }
 
-
-.right-off-canvas-menu{
-    background: #CFB68C;
+#title{
+    padding: 10px;
+    text-align: center;
 }
 
-#title{
-    padding: 15px;
-    text-align: center;
+.ui-header{
+    background-color: #9f1212;
+    color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.fa{
+    color: #9f1212;
 }
 
 /*
@@ -130,24 +80,4 @@ p{
 h4{ color: rgba(255, 255, 255, 0.7);}
 */
 
-.ui-mobile .ui-page-active {
-    height: 100%;
-}
-
-ul.off-canvas-list li{
-    background: #B59F7A;
-}
-
-ul.off-canvas-list li > *:hover {
-    background: #B59F7A;
-}
-
-ul.off-canvas-list li a{
-    border-bottom: 1px solid #8F7D60;
-}
-
-ul.off-canvas-list li label{
-    background: #8F7D60;
-    color: white;
-}
 
