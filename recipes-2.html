@@ -9,6 +9,10 @@
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="css/themes-default-jquery.mobile-1.4.4.min.css">
 	<link rel="stylesheet" href="css/jqm-demos.css">
+	
+	<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+	<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+	<script src="js/firebase.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/jquery.mobile-1.4.4.min.js"></script>
@@ -39,14 +43,13 @@
 <body>
     <div data-role="header" data-position="fixed" data-theme="a">
 		<a href="index.html" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
-        <h1>Cookbook</h1>
+        <h1>Albums</h1>
     </div><!-- /header -->
 
-<div data-role="page" data-title="Cookbook">
+<div data-role="page" data-title="Recipes">
 
     <div class="ui-content" role="main">
-			<ul data-role="listview" data-split-icon="carat-r" data-split-theme="a" data-inset="false" data-theme="a" data-dividertheme="e" data-filter="true" data-filter-theme="a" data-filter-placeholder="Search your recipes...">
-				<li data-role="list-divider">Appetizers</li>
+			<ul data-role="listview" data-split-icon="plus" data-split-theme="a" data-inset="false" data-theme="a" data-dividertheme="e" data-filter="true" data-filter-theme="a" data-filter-placeholder="Search new recipes...">
 				<li><a href="#">
 					<img src="img/album-bb.jpg">
 				<h2>Broken Bells</h2>
@@ -59,7 +62,6 @@
 				<p>Hot Chip</p></a>
 					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
 				</li>
-				<li data-role="list-divider">Entr&eacute;es</li>
 				<li><a href="#">
 					<img src="img/album-p.jpg">
 				<h2>Wolfgang Amadeus Phoenix</h2>
@@ -84,14 +86,12 @@
 				<p>Radiohead</p>
 					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
 				</a></li>
-				
 				<li><a href="#">
 					<img src="img/album-xx.jpg">
 					<h3>XX</h3>
 				<p>XX</p>
 					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
 				</a></li>
-				<li data-role="list-divider">Desserts</li>
 				<li><a href="#">
 					<img src="img/album-mg.jpg">
 					<h3>Congratulations</h3>
@@ -120,19 +120,13 @@
 			</ul>
 
 			<div data-role="popup" id="purchase" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
-				<h3>Recipe Title</h3>
-				<p><strong>Ingredients</strong></p>
-				<ul>
-					<li>dfgdf fdsg</li>
-					<li>dsfgsdf</li>
-					<li>sdfg sdfgfds</li>
-					<li>sdfg sdfgfsd</li>
-				</ul>
-				<p><strong>Instructions</strong></p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam arcu justo, iaculis et consequat auctor, consectetur sed tellus. Ut nisl magna, faucibus vitae leo a, scelerisque feugiat ex.</p>
-				<a href="#" class="ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-shadow ui-btn-icon-left ui-icon-heart" data-rel="back">Favorite</a>
-				<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow" data-rel="back">Close</a>
+				<h3>Add to Cookbook?</h3>
+				<p>Click 'Add' to save this recipe in your cookbook.</p>
+				<a href="#" class="ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-shadow ui-btn-icon-left ui-icon-check" data-rel="back">Add recipe</a>
+				<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow" data-rel="back">Cancel</a>
 			</div>
+			
+			<ul id="trip-list"></ul>
 
 		</div><!-- /content -->
 
