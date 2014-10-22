@@ -12,50 +12,51 @@ $( document ).ready(function() {
     console.log( "document ready!" );
     
     //function to populate menu
-    loadTrips();
+    loadRecipes();
 });
 
 
-function loadTrips(){
+function loadRecipes(){
     // Create our Firebase reference
-    var tripsToDisplay = 3;	
-    var tripListRef = new Firebase('https://my-cookbook.firebaseio.com///recipes');
-    var tripListView = tripListRef.limit(tripsToDisplay);
+    var recipesToDisplay = 3;	
+    var recipeListRef = new Firebase('https://my-cookbook.firebaseio.com///recipes');
+    var recipeListView = recipeListRef.limit(recipesToDisplay);
     
-    tripListRef.once('value', function(dataSnapshot) {
+    recipeListRef.once('value', function(dataSnapshot) {
 	// store dataSnapshot for use in below examples.
-	tripListView = dataSnapshot.val();
-	console.log(tripListView);
+	recipeListView = dataSnapshot.val();
+	console.log(recipeListView);
 	//length of an object.
-	//console.log(Object.keys(tripListView).length)
+	//console.log(Object.keys(recipeListView).length)
 	var listItems = "";
 	
-	$.each(tripListView, function(key, val) {
-	    var location = [];
+	$.each(recipeListView, function(key, val) {
+	    var recipes = [];
 	    
 	    console.log('Key: ' + key + '  Val: ' + val)
-	    location.push(key);
+	    recipes.push(key);
 	    $.each(val, function(key, val) {
-		location.push(val); 
+		recipes.push(val); 
 	    });
 	    
 	    
-	    listItems += '<li"><img src=" '+ location[3] +' ">'
-	    listItems += '<h2>' + location[0] + '</h2>';
-	    listItems += '<p><strong>Ready in: </strong>' + location[4] + '</p>';
-	    listItems += '<p><strong>Serving Size: </strong>' + location[5] + '</p>';
-	    listItems += '<p><strong>Ingredients: </strong><br>' + location[2] + '</p>';
-	    listItems += '<p><strong>Directions: </strong><br>' + location[1] + '</p></li>'
+	    listItems += '<li"><img src=" '+ recipes[3] +' ">'
+	    listItems += '<h2>' + recipes[0] + '</h2>';
+	    listItems += '<p><strong>Ready in: </strong>' + recipes[4] + '</p>';
+	    listItems += '<p><strong>Serving Size: </strong>' + recipes[5] + '</p>';
+	    listItems += '<p><strong>Ingredients: </strong><br>' + recipes[2] + '</p>';
+	    listItems += '<p><strong>Directions: </strong><br>' + recipes[1] + '</p></li>'
             
             
 	});
 	
 	console.log(listItems);
-	$("#trip-list").html(listItems);
+	$("#recipe-list").html(listItems);
 	
     });
     
 }
+
 
 
 
