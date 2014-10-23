@@ -39,15 +39,23 @@ a:hover, a:focus {
     position: fixed;
 }
 
-#home-pg-buttons{
-    text-align: center;
+#homeBG {
+    background-image: url("../img/cuttingboard.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-#home-pg-buttons > .button{
+#home-pg-button{
+    text-align: center;
+    text-shadow: none;
+}
+
+#home-pg-button .button {
     margin: 15px;
-    background: #9f1212;
+    background-color: #9f1212;
     color: #CFB68C;
     display: inline-block;
+    margin-top: 40%;
 }
 
 .icon-bar{

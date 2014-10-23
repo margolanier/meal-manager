@@ -11,9 +11,15 @@
 	<link rel="stylesheet" href="css/jqm-demos.css">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css" />
+	
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+	<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+	<script src="js/firebase.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/jquery.mobile-1.4.4.min.js"></script>
+	
 	<script>
 		$(function() {
 			$( "[data-role='navbar']" ).navbar();
@@ -47,72 +53,35 @@
 <div data-role="page" data-title="Recipes">
 
     <div class="ui-content" role="main">
+	<!-- <ul id="recipe-list"></ul> -->
 			<ul data-role="listview" data-split-icon="plus" data-split-theme="a" data-inset="false" data-theme="a" data-dividertheme="e" data-filter="true" data-filter-theme="a" data-filter-placeholder="Search new recipes...">
 				<li><a href="#">
-					<img src="img/album-bb.jpg">
-				<h2>Broken Bells</h2>
-				<p>Broken Bells</p></a>
+					<img src="http://images.media-allrecipes.com/userphotos/250x250/01/01/37/1013797.jpg">
+				<h2>BBQ Pulled Pork Sandwiches</h2>
+				<p>Ready in: 10+ hrs</p></a>
 					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
 				</li>
 				<li><a href="#">
-					<img src="img/album-hc.jpg">
-				<h2>Warning</h2>
-				<p>Hot Chip</p></a>
+					<img src="http://images.media-allrecipes.com/userphotos/250x250/00/00/17/1788.jpg">
+				<h2>Baked Lemon Chicken</h2>
+				<p>Ready in: 3+ hrs</p></a>
 					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
 				</li>
 				<li><a href="#">
-					<img src="img/album-p.jpg">
-				<h2>Wolfgang Amadeus Phoenix</h2>
-				<p>Phoenix</p></a>
+					<img src="http://images.media-allrecipes.com/userphotos/250x250/00/69/93/699313.jpg">
+				<h2>Grilled Salmon with Cilantro Sauce</h2>
+				<p>Ready in: 30 min</p></a>
 					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-				</li>
 				<li><a href="#">
-					<img src="img/album-ok.jpg">
-					<h3>Of The Blue Colour Of The Sky</h3>
-				<p>Ok Go</p>
+					<img src="http://images.media-allrecipes.com/userphotos/250x250/00/43/94/439428.jpg">
+					<h3>Portobello Mushroom Stroganoff</h3>
+				<p>Ready in: 30 min</p>
 					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
 				</a></li>
 				<li><a href="#">
-					<img src="img/album-ws.jpg">
-					<h3>Elephant</h3>
-				<p>The White Stripes</p>
-					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-				</a></li>
-				<li><a href="#">
-					<img src="img/album-rh.jpg">
-					<h3>Kid A</h3>
-				<p>Radiohead</p>
-					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-				</a></li>
-				<li><a href="#">
-					<img src="img/album-xx.jpg">
-					<h3>XX</h3>
-				<p>XX</p>
-					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-				</a></li>
-				<li><a href="#">
-					<img src="img/album-mg.jpg">
-					<h3>Congratulations</h3>
-				<p>MGMT</p>
-					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-				</a></li>
-				<li><a href="#">
-					<img src="img/album-ag.jpg">
-					<h3>Ashes Grammar</h3>
-				<p>A Sunny Day in Glasgow</p>
-					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-				</a></li>
-
-				<li><a href="index.html">
-					<img src="img/album-k.jpg">
-					<h3>Hot Fuss</h3>
-				<p>Killers</p>
-					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-				</a></li>
-				<li><a href="#">
-					<img src="img/album-af.jpg">
-					<h3>The Suburbs</h3>
-				<p>Arcade Fire</p>
+					<img src="http://images.media-allrecipes.com/userphotos/250x250/01/11/16/1111625.jpg">
+					<h3>Vegetarian Breakfast Burrito</h3>
+				<p>Ready in: 20 min</p>
 					<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
 				</a></li>
 			</ul>

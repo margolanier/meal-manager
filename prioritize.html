@@ -9,24 +9,17 @@
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="css/themes-default-jquery.mobile-1.4.4.min.css">
 	<link rel="stylesheet" href="css/jqm-demos.css">
-	<link rel="stylesheet" href="css/foundation.css" />
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css" />
 	
-	<!-- JavaScript files -->
-	<script src="js/main.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+	<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+	<script src="js/prioritize.js"></script>
+	<script src="js/firebase.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/jquery.mobile-1.4.4.min.js"></script>
-	
-	<script>
-	  $(document).foundation({
-	    magellan : {
-	      active_class: 'active',
-	      threshold: 0
-	    }
-	  });
-	</script>
 	
 	<script>
 		$(function() {
@@ -55,25 +48,30 @@
 <body>
     <div data-role="header" data-position="fixed" data-theme="a">
 		<a href="index.html" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
-        <h1>Meal Manager</h1>
+        <h1>Grocery List</h1>
     </div><!-- /header -->
 
-	<div data-role="page" data-title="Meal Manager" id="homeBG">
+<div data-role="page" data-title="Grocery List">
 
-	    <div class="ui-content" role="main">
-                <div id="title">
-                    <h1>Meal Manager</h1>
-                    <h4>Find new recipes and manage your grocery list.</h4>
-                    <img src="img/fork.png" style="height: 70px;" />
-                  </div>
-                  
-                  <div id="home-pg-button">
-                      <a href="recipes.html" class="button">
-                        <i class="fa fa-shopping-cart fa-2x"></i>
-                        <br>Browse New Recipes
-                      </a>
-                  </div>
-            </div><!-- /content -->
+    <div class="ui-content" role="main">
+
+<form>
+    <input id="newEntry" placeholder="Add an ingredient..."/>
+    <button id="submit">Add</button>
+</form>
+
+<div id="entries"></div>
+
+<div class="entry template">
+    <span class="text"></span>
+    <span class="options">
+        <button class="up">Up</button>
+        <button class="down">Down</button>
+        <button class="remove">remove</button>
+    </span>
+</div>
+
+</div><!-- /content -->
 
 	</div><!-- /page -->
 

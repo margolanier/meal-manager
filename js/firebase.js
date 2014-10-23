@@ -47,11 +47,11 @@ function loadRecipes(){
 	    listItems += '<p><strong>Ingredients: </strong><br>' + recipes[2] + '</p>';
 	    listItems += '<p><strong>Directions: </strong><br>' + recipes[1] + '</p></li>'
             
-            
 	});
 	
 	console.log(listItems);
 	$("#recipe-list").html(listItems);
+	$("#recipe-list").listview("refresh");
 	
     });
     
