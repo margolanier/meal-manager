@@ -10,7 +10,7 @@ $( document ).ready(function() {
 
 
 var rootRef, highestPriority, $entries;
-rootRef = new Firebase("https://ordered-data.firebaseio-demo.com");
+rootRef = new Firebase("https://ingredients.firebaseio.com/");
 
 rootRef.on("child_added", function (snapshot) {
     var entry = snapshot.name();
@@ -22,7 +22,7 @@ rootRef.on("child_added", function (snapshot) {
     $entry.removeClass("template");
     $entry.show();
     $entry.attr('id', entry);
-    $entry.children(".text").html(entry + " Priority(" + priority + ")");
+    $entry.children(".text").html(entry);
     $entry.data('priority', priority);
     $entry.data('name', entry);
     

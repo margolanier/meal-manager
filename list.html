@@ -11,9 +11,16 @@
 	<link rel="stylesheet" href="css/jqm-demos.css">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css" />
+	
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+	<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+	<script src="js/prioritize.js"></script>
+	<script src="js/firebase.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/jquery.mobile-1.4.4.min.js"></script>
+	
 	<script>
 		$(function() {
 			$( "[data-role='navbar']" ).navbar();
@@ -37,6 +44,50 @@
 			});
 		});
 	</script>
+	
+	<style>
+		form{
+			display: inline-flex;
+		}
+		.ui-input-text{
+		}
+		#submit{
+			width: 30px;
+		}
+		#entries {
+		width: 100%;
+	    }
+	    
+	    .options{
+		display: inline-flex;
+	    }
+	    
+	    .order .up, .order .down{
+		height: 30px;
+		width: 30px;
+		padding: 2px;
+	    }
+	    
+	    button .remove{
+		height: 100%;
+		padding: 2px;
+		width: 30px;
+	    }
+	    
+	    button.ui-btn{
+		width: auto;
+	    }
+	    
+	    .entry {
+		height: 85px;
+		border: solid 1px #ddd;
+		color: #333;
+	    }
+	    
+	    .entry .options {
+		float: right;
+	    }
+	</style>
 </head>
 <body>
     <div data-role="header" data-position="fixed" data-theme="a">
@@ -44,50 +95,29 @@
         <h1>Grocery List</h1>
     </div><!-- /header -->
 
-	<div data-role="page" data-title="Grocery List">
+<div data-role="page" data-title="Grocery List">
 
-	    <div class="ui-content" role="main">
+    <div class="ui-content" role="main">
 
-				<ul data-role="listview" data-theme="a" data-dividertheme="e" data-filter="true" data-filter-theme="a" data-filter-placeholder="Search groceries...">
-					<li data-role="list-divider">A</li>
-					<li><a href="#">Adam Kinkaid</a></li>
-					<li><a href="#">Alex Wickerham</a></li>
-					<li><a href="#">Avery Johnson</a></li>
-					<li data-role="list-divider">B</li>
-					<li><a href="#">Bob Cabot</a></li>
-					<li data-role="list-divider">C</li>
-					<li><a href="#">Caleb Booth</a></li>
-					<li><a href="#">Christopher Adams</a></li>
-					<li><a href="#">Culver James</a></li>
-					<li data-role="list-divider">D</li>
-					<li><a href="#">David Walsh</a></li>
-					<li><a href="#">Drake Alfred</a></li>
-					<li data-role="list-divider">E</li>
-					<li><a href="#">Elizabeth Bacon</a></li>
-					<li><a href="#">Emery Parker</a></li>
-					<li><a href="#">Enid Voldon</a></li>
-					<li data-role="list-divider">F</li>
-					<li><a href="#">Francis Wall</a></li>
-					<li data-role="list-divider">G</li>
-					<li><a href="#">Graham Smith</a></li>
-					<li><a href="#">Greta Peete</a></li>
-					<li data-role="list-divider">H</li>
-					<li><a href="#">Harvey Walls</a></li>
-					<li data-role="list-divider">M</li>
-					<li><a href="#">Mike Farnsworth</a></li>
-					<li><a href="#">Murray Vanderbuilt</a></li>
-					<li data-role="list-divider">N</li>
-					<li><a href="#">Nathan Williams</a></li>
-					<li data-role="list-divider">P</li>
-					<li><a href="#">Paul Baker</a></li>
-					<li><a href="#">Pete Mason</a></li>
-					<li data-role="list-divider">R</li>
-					<li><a href="#">Rod Tarker</a></li>
-					<li data-role="list-divider">S</li>
-					<li><a href="#">Sawyer Wakefield</a></li>
-				</ul>
+<form>
+    <input id="newEntry" placeholder="Add an ingredient..." style="width:90%" />
+    <button id="submit">+</button>
+</form>
 
-		</div><!-- /content -->
+<div id="entries"></div>
+
+<div class="entry template">
+    <span class="text"></span>
+    <span class="options">
+	<div class="order">
+        <button class="up">&#x25B2;</button>
+        <button class="down">&#x25BC;</button>
+	</div>
+        <button class="remove">-</button>
+    </span>
+</div>
+
+</div><!-- /content -->
 
 	</div><!-- /page -->
 
