@@ -82,7 +82,9 @@ rootRef.on("child_moved", function (snapshot, prevChildName) {
     
     $entry.data('priority', snapshot.getPriority());
     
-    $entry.children(".text").html(snapshot.name() + " Priority(" + snapshot.getPriority() + ")");
+    // $entry.children(".text").html(snapshot.name() + " Priority(" + snapshot.getPriority() + ")");
+    // took out priority number/order
+    $entry.children(".text").html(snapshot.name() );
     
     if ($prevEntry.length) {
         $entry.insertAfter($prevEntry);
