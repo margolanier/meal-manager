@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Persistent toolbars - jQuery Mobile Demos</title>
+	<link rel="shortcut icon" href="../favicon.ico">
+	
+	<!-- for droppable -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="css/themes-default-jquery.mobile-1.4.4.min.css">
+	<link rel="stylesheet" href="css/jqm-demos.css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css" />
+	
+	<!-- for droppable -->
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+	<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+	<script src="js/firebase.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/jquery.mobile-1.4.4.min.js"></script>
+	
+	<script>
+		$(function() {
+			$( "[data-role='navbar']" ).navbar();
+			$( "[data-role='header'], [data-role='footer']" ).toolbar();
+		});
+		// Update the contents of the toolbars
+		$( document ).on( "pagecontainerchange", function() {
+			// Each of the four pages in this demo has a data-title attribute
+			// which value is equal to the text of the nav button
+			// For example, on first page: <div data-role="page" data-title="Info">
+			var current = $( ".ui-page-active" ).jqmData( "title" );
+			// Change the heading
+			$( "[data-role='header'] h1" ).text( current );
+			// Remove active class from nav buttons
+			$( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
+			// Add active class to current nav button
+			$( "[data-role='navbar'] a" ).each(function() {
+				if ( $( this ).text() === current ) {
+					$( this ).addClass( "ui-btn-active" );
+				}
+			});
+		});
+	</script>	
+	
+  <style>
+  #gallery { float: left; width: 65%; min-height: 12em; }
+  .gallery.custom-state-active { background: #eee; }
+  .gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+  .gallery li h5 { margin: 0 0 0.4em; cursor: move; }
+  .gallery li a { float: right; }
+  .gallery li a.ui-icon-zoomin { float: left; }
+  .gallery li img { width: 100%; cursor: move; }
+ 
+  #trash { min-height: 150px; padding: 1%; }
+  #trash h4 { line-height: 16px; margin: 0 0 0.4em; }
+  #trash h4 .ui-icon { float: left; }
+  #trash .gallery h5 { display: none; }
+  </style>
+  
+  <script>
+  $(function() {
+    // there's the gallery and the trash
+    var $gallery = $( "#gallery" ),
+      $trash = $( "#trash" );
+ 
+    // let the gallery items be draggable
+    $( "li", $gallery ).draggable({
+      cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+      revert: "invalid", // when not dropped, the item will revert back to its initial position
+      containment: "document",
+      helper: "clone",
+      cursor: "move"
+    });
+ 
+    // let the trash be droppable, accepting the gallery items
+    $trash.droppable({
+      accept: "#gallery > li",
+      activeClass: "ui-state-highlight",
+      drop: function( event, ui ) {
+        deleteImage( ui.draggable );
+      }
+    });
+ 
+    // let the gallery be droppable as well, accepting items from the trash
+    $gallery.droppable({
+      accept: "#trash li",
+      activeClass: "custom-state-active",
+      drop: function( event, ui ) {
+        recycleImage( ui.draggable );
+      }
+    });
+ 
+    // image deletion function
+    var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
+    function deleteImage( $item ) {
+      $item.fadeOut(function() {
+        var $list = $( "ul", $trash ).length ?
+          $( "ul", $trash ) :
+          $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $trash );
+ 
+        $item.find( "a.ui-icon-trash" ).remove();
+        $item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
+          $item
+            .animate({ width: "48px" })
+            .find( "img" )
+              .animate({ height: "36px" });
+        });
+      });
+    }
+ 
+    // image recycle function
+    var trash_icon = "<a href='link/to/trash/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-trash'>Delete image</a>";
+    function recycleImage( $item ) {
+      $item.fadeOut(function() {
+        $item
+          .find( "a.ui-icon-refresh" )
+            .remove()
+          .end()
+          .css( "width", "96px")
+          .append( trash_icon )
+          .find( "img" )
+            .css( "height", "72px" )
+          .end()
+          .appendTo( $gallery )
+          .fadeIn();
+      });
+    }
+ 
+    // image preview function, demonstrating the ui.dialog used as a modal window
+    function viewLargerImage( $link ) {
+      var src = $link.attr( "href" ),
+        title = $link.siblings( "img" ).attr( "alt" ),
+        $modal = $( "img[src$='" + src + "']" );
+ 
+      if ( $modal.length ) {
+        $modal.dialog( "open" );
+      } else {
+        var img = $( "<img alt='" + title + "' width='384' height='288' style='display: none; padding: 8px;' />" )
+          .attr( "src", src ).appendTo( "body" );
+        setTimeout(function() {
+          img.dialog({
+            title: title,
+            width: 400,
+            modal: true
+          });
+        }, 1 );
+      }
+    }
+ 
+    // resolve the icons behavior with event delegation
+    $( "ul.gallery > li" ).click(function( event ) {
+      var $item = $( this ),
+        $target = $( event.target );
+ 
+      if ( $target.is( "a.ui-icon-trash" ) ) {
+        deleteImage( $item );
+      } else if ( $target.is( "a.ui-icon-zoomin" ) ) {
+        viewLargerImage( $target );
+      } else if ( $target.is( "a.ui-icon-refresh" ) ) {
+        recycleImage( $item );
+      }
+ 
+      return false;
+    });
+  });
+  </script>
+</head>
+	
+<body>
+    <div data-role="header" data-position="fixed" data-theme="a">
+	<a href="nutrition.html" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+        <h1></h1>
+    </div><!-- /header -->
+
+<div data-role="page" data-title="Plan Your Menu">
+
+    <div class="ui-content" role="main">
+	<!-- Tabs // Days of the Week -->
+				<div data-role="tabs">
+					<div data-role="navbar">
+					    <ul>
+					      <li><a href="#mon" data-theme="a" data-ajax="false">M</a></li>
+					      <li><a href="#tues" data-theme="a" data-ajax="false">Tu</a></li>
+					      <li><a href="ajax-content.html" data-theme="a" data-ajax="false">W</a></li>
+					      <li><a href="#thurs" data-theme="a" data-ajax="false">Th</a></li>
+					      <li><a href="#fri" data-theme="a" data-ajax="false">F</a></li>
+					    </ul>
+					</div>
+					<div id="mon" class="ui-content">
+						<p>Entree
+						<br>Side
+						<br>Dessert
+						<br>Drink</p>
+						<div id="trash" class="ui-widget-content ui-state-default">
+  <h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Trash</span> Menu</h4>
+</div>
+					</div>
+					<div id="tues" class="ui-content">
+						<h1>Tuesday menu</h1>
+					</div>
+					<div id="thurs" class="ui-content">
+						<h1>Thursday menu</h1>
+					</div>
+					<div id="fri" class="ui-content">
+						<h1>Friday menu</h1>
+					</div>
+				</div>
+		
+		<div class="ui-widget ui-helper-clearfix">
+			
+			<ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+			  <li class="ui-widget-content ui-corner-tr">
+			    <h5 class="ui-widget-header">Recipe 1</h5>
+			    <img src="images/high_tatras_min.jpg" alt="The peaks of High Tatras" width="96" height="72">
+			    <a href="images/high_tatras.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+			    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Delete image</a>
+			  </li>
+			  <li class="ui-widget-content ui-corner-tr">
+			    <h5 class="ui-widget-header">Recipe 2</h5>
+			    <img src="images/high_tatras2_min.jpg" alt="The chalet at the Green mountain lake" width="96" height="72">
+			    <a href="images/high_tatras2.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+			    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Delete image</a>
+			  </li>
+			  <li class="ui-widget-content ui-corner-tr">
+			    <h5 class="ui-widget-header">Recipe 3</h5>
+			    <img src="images/high_tatras3_min.jpg" alt="Planning the ascent" width="96" height="72">
+			    <a href="images/high_tatras3.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+			    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Delete image</a>
+			  </li>
+			  <li class="ui-widget-content ui-corner-tr">
+			    <h5 class="ui-widget-header">Recipe  4</h5>
+			    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
+			    <a href="images/high_tatras4.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+			    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Delete image</a>
+			  </li>
+			</ul>
+		
+		
+	<div id="recipe-list" data-role="listview" data-split-icon="plus" data-split-theme="a" data-inset="false" data-theme="a" data-dividertheme="e" data-filter="true" data-filter-theme="a" data-filter-placeholder="Search new recipes..."></ul>
+ 
+
+
+ 
+</div>
+ 
+ 
+</body>
+</html>
