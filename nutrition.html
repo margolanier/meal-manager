@@ -11,15 +11,9 @@
 	<link rel="stylesheet" href="css/jqm-demos.css">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css" />
-	
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
-	<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
-	<script src="js/firebase.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/jquery.mobile-1.4.4.min.js"></script>
-	
 	<script>
 		$(function() {
 			$( "[data-role='navbar']" ).navbar();
@@ -50,47 +44,37 @@
         <h1></h1>
     </div><!-- /header -->
 
-<div data-role="page" data-title="Plan Your Menu">
+<div data-role="page" data-title="Daily Nutrition">
 
     <div class="ui-content" role="main">
 	<!-- Tabs // Days of the Week -->
-				<div data-role="tabs">
-					<div data-role="navbar">
-					    <ul>
-					      <li><a href="#mon" data-theme="a" data-ajax="false">M</a></li>
-					      <li><a href="#tues" data-theme="a" data-ajax="false">Tu</a></li>
-					      <li><a href="ajax-content.html" data-theme="a" data-ajax="false">W</a></li>
-					      <li><a href="#thurs" data-theme="a" data-ajax="false">Th</a></li>
-					      <li><a href="#fri" data-theme="a" data-ajax="false">F</a></li>
-					    </ul>
-					</div>
-					<div id="mon" class="ui-content">
-						<p>Entree
-						<br>Side
-						<br>Dessert
-						<br>Drink</p>
-					</div>
-					<div id="tues" class="ui-content">
-						<h1>Tuesday menu</h1>
-					</div>
-					<div id="thurs" class="ui-content">
-						<h1>Thursday menu</h1>
-					</div>
-					<div id="fri" class="ui-content">
-						<h1>Friday menu</h1>
-					</div>
-				</div>
-	<div id="recipe-list" data-role="listview" data-split-icon="plus" data-split-theme="a" data-inset="false" data-theme="a" data-dividertheme="e" data-filter="true" data-filter-theme="a" data-filter-placeholder="Search new recipes..."></ul>
+	<div data-role="tabs">
+		<div data-role="navbar" id="weeklyMenuTabs">
+		    <ul>
+		      <li><a href="#mon" data-theme="a" data-ajax="false">M</a></li>
+		      <li><a href="#tues" data-theme="a" data-ajax="false">Tu</a></li>
+		      <li><a href="ajax-content.html" data-theme="a" data-ajax="false">W</a></li>
+		      <li><a href="#thurs" data-theme="a" data-ajax="false">Th</a></li>
+		      <li><a href="#fri" data-theme="a" data-ajax="false">F</a></li>
+		    </ul>
+		</div>
+		<div id="mon" class="ui-content">
+			<h1>Monday menu</h1>
+		</div>
+		<div id="tues" class="ui-content">
+			<h1>Tuesday menu</h1>
+		</div>
+		<div id="thurs" class="ui-content">
+			<h1>Thursday menu</h1>
+		</div>
+		<div id="fri" class="ui-content">
+			<h1>Friday menu</h1>
+		</div>
+	</div>
 	
+		<img src="img/healthy_eating_plate.jpg" width="100%" />
 
-			<div data-role="popup" id="purchase" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
-				<h3>Add to Cookbook?</h3>
-				<p>Click 'Add' to save this recipe in your cookbook.</p>
-				<a href="#" class="ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-shadow ui-btn-icon-left ui-icon-check" data-rel="back">Add recipe</a>
-				<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow" data-rel="back">Cancel</a>
-			</div>
-
-		</div><!-- /content -->
+	</div><!-- /content -->
 
 	</div><!-- /page -->
 
