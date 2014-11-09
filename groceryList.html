@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Persistent toolbars - jQuery Mobile Demos</title>
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="css/themes-default-jquery.mobile-1.4.4.min.css">
+	<link rel="stylesheet" href="css/jqm-demos.css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css" />
+	
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+	<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+	<script src="js/prioritize.js"></script>
+	<script src="js/firebase.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/jquery.mobile-1.4.4.min.js"></script>
+	
+	<script>
+		$(function() {
+			$( "[data-role='navbar']" ).navbar();
+			$( "[data-role='header'], [data-role='footer']" ).toolbar();
+		});
+		// Update the contents of the toolbars
+		$( document ).on( "pagecontainerchange", function() {
+			// Each of the four pages in this demo has a data-title attribute
+			// which value is equal to the text of the nav button
+			// For example, on first page: <div data-role="page" data-title="Info">
+			var current = $( ".ui-page-active" ).jqmData( "title" );
+			// Change the heading
+			$( "[data-role='header'] h1" ).text( current );
+			// Remove active class from nav buttons
+			$( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
+			// Add active class to current nav button
+			$( "[data-role='navbar'] a" ).each(function() {
+				if ( $( this ).text() === current ) {
+					$( this ).addClass( "ui-btn-active" );
+				}
+			});
+		});
+	</script>
+	
+	<style>
+		form{
+			display: inline-flex;
+		}
+		.ui-input-text{
+		}
+		#submit{
+			width: 30px;
+		}
+		#entries {
+		width: 100%;
+	    }
+	    
+	    .options{
+		display: inline-flex;
+	    }
+	    
+	    .order .up, .order .down{
+		height: 30px;
+		width: 30px;
+		padding: 2px;
+	    }
+	    
+	    button .remove{
+		height: 100%;
+		padding: 2px;
+		width: 30px;
+	    }
+	    
+	    button.ui-btn{
+		width: auto;
+	    }
+	    
+	    .entry {
+		height: 85px;
+		border: solid 1px #ddd;
+		color: #333;
+	    }
+	    
+	    .entry .options {
+		float: right;
+	    }
+	</style>
+</head>
+<body>
+    <div data-role="header" data-position="fixed" data-theme="a">
+		<a href="index.html" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+        <h1>Grocery List</h1>
+    </div><!-- /header -->
+
+<div data-role="page" data-title="Grocery List">
+
+    <div class="ui-content" role="main">
+
+<form>
+    <input id="newEntry" placeholder="Add an ingredient..." style="width:90%" />
+    <button id="submit">+</button>
+</form>
+
+<div id="entries"></div>
+
+<div class="entry template">
+    <span class="text"></span>
+    <span class="options">
+	<div class="order">
+        <button class="up">&#x25B2;</button>
+        <button class="down">&#x25BC;</button>
+	</div>
+        <button class="remove">-</button>
+    </span>
+</div>
+
+</div><!-- /content -->
+
+	</div><!-- /page -->
+
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="weeklyMenu.html" data-prefetch="true" data-transition="slide">Menu</a></li>
+				<li><a href="planMeals.html" data-prefetch="true" data-transition="fade">Plan</a></li> <!-- transition options = fade, flip, turn, slide -->
+				<li><a href="groceryList.html" data-prefetch="true" data-transition="flip">List</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+
+</body>
+</html>

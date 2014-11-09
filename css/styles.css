@@ -138,6 +138,10 @@ p{
 h4{ color: rgba(255, 255, 255, 0.7);}
 */
 
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{
+    text-shadow: none;
+}
+
 .ui-mobile .ui-page-active {
     height: 100%;
 }
