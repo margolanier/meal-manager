@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="css/jqm-demos.css">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css" />
-	
+
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
 	<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
@@ -19,7 +19,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/jquery.mobile-1.4.4.min.js"></script>
-	
+
 	<script>
 		$(function() {
 			$( "[data-role='navbar']" ).navbar();
@@ -81,12 +81,30 @@
 					</div>
 				</div>
 	<div id="recipe-list" data-role="listview" data-split-icon="plus" data-split-theme="a" data-inset="false" data-theme="a" data-dividertheme="e" data-filter="true" data-filter-theme="a" data-filter-placeholder="Search new recipes..."></ul>
-	
+
 
 			<div data-role="popup" id="purchase" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
-				<h3>Add to Cookbook?</h3>
-				<p>Click 'Add' to save this recipe in your cookbook.</p>
-				<a href="#" class="ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-shadow ui-btn-icon-left ui-icon-check" data-rel="back">Add recipe</a>
+				<h3>Add this recipe?</h3>
+				<div data-role="fieldcontain">
+    <fieldset data-role="controlgroup">
+    	<legend>Select a day:</legend>
+         	<input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" />
+         	<label for="radio-choice-1">Monday</label>
+
+         	<input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2"  />
+         	<label for="radio-choice-2">Tuesday</label>
+
+         	<input type="radio" name="radio-choice-1" id="radio-choice-3" value="choice-3"  />
+         	<label for="radio-choice-3">Wednesday</label>
+
+         	<input type="radio" name="radio-choice-1" id="radio-choice-4" value="choice-4"  />
+         	<label for="radio-choice-4">Thursday</label>
+
+					<input type="radio" name="radio-choice-1" id="radio-choice-5" value="choice-5"  />
+					<label for="radio-choice-5">Friday</label>
+    </fieldset>
+</div>
+				<a href="#" class="ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-shadow ui-btn-icon-left ui-icon-check" data-rel="back">Add to Menu</a>
 				<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow" data-rel="back">Cancel</a>
 			</div>
 
