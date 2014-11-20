@@ -22,7 +22,7 @@
         "use strict";
     
         // the main firebase reference
-        var rootRef = new Firebase('https://docs-sandbox.firebaseio.com/web/uauth');
+        var rootRef = new Firebase('https://login-page.firebaseio.com/web/uauth');
     
         // pair our routes to our form elements and controller
         var routeMap = {
@@ -267,6 +267,26 @@
     
                 });
             });
+    
+            //=================== Margo's edits
+            //=================== Added in from firebase docs
+            ref.authUser("jenny@example.com", password:"correcthorsebatterystaple") {
+                error, authData in
+                if error != nil {
+                    // Something went wrong. :(
+                } else {
+                    // Authentication just completed successfully :)
+                    let newUser = [
+                        "provider": authData.provider,
+                        "email": authData.providerData["email"] as? NSString as? String
+                    ]
+            
+                    ref.childByAppendingPath("users")
+                       .childByAppendingPath(authData.uid).setValue(newUser)
+                }
+            }
+            //=================== End of edits
+    
     
         };
     
