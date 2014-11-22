@@ -11,11 +11,11 @@
 		<author href="margolanier.com" email="mplanier@live.unc.edu">
                     Margo Lanier
 		</author>
-                
+
                 <access origin="*" subdomains="true" />
-                
-                
-		<preference name="phonegap-version" value="3.5.0" />
+
+
+		<preference name="phonegap-version" value="3.6.3" />
 		<preference name="orientation" value="default" />
 		<preference name="fullscreen" value="false" />
 		<preference name="target-device" value="universal" />
@@ -42,12 +42,12 @@
 		<preference name="BackgroundColor" value="0x000000"/>
 		<preference name="KeepRunning" value="true"/>
 		<preference name="DisallowOverscroll" value="false"/>
-		<preference name="LoadingDialog" value=","/> 
+		<preference name="LoadingDialog" value=","/>
 		<preference name="LoadUrlTimeoutValue" value="20000" />
 		<preference name="disable-cursor" value="false" />
 		<gap:platform name="ios" />
 		<gap:platform name="android" />
-		
+
                 <!-- Camera -->
                 <feature name="Camera">
                   <param name="ios-package" value="CDVCamera" />
@@ -55,7 +55,7 @@
                 <feature name="Camera">
                   <param name="android-package" value="org.apache.cordova.CameraLauncher" />
                 </feature>
-		
+
                 <feature name="http://api.phonegap.com/1.0/contacts"/>
 		<feature name="http://api.phonegap.com/1.0/file"/>
 		<feature name="http://api.phonegap.com/1.0/geolocation"/>
@@ -89,5 +89,5 @@
 		<icon src="imgs/icons/iTunesArtwork@2x.png" gap:platform="android" gap:density="xxxhdpi" />
 		<icon src="imgs/icons/AppIcon72x72.png" />
 		<gap:splash src="splash.png" />
-		
+
 	</widget>

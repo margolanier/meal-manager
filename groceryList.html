@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="css/jqm-demos.css">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css" />
-	
+
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
 	<script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
@@ -20,7 +20,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/jquery.mobile-1.4.4.min.js"></script>
-	
+
 	<script>
 		$(function() {
 			$( "[data-role='navbar']" ).navbar();
@@ -44,8 +44,14 @@
 			});
 		});
 	</script>
-	
+
 	<style>
+	.ui-focus {
+		background: white;
+		text-shadow: none;
+	}
+
+
 		form{
 			display: inline-flex;
 		}
@@ -57,33 +63,33 @@
 		#entries {
 		width: 100%;
 	    }
-	    
+
 	    .options{
 		display: inline-flex;
 	    }
-	    
+
 	    .order .up, .order .down{
 		height: 30px;
 		width: 30px;
 		padding: 2px;
 	    }
-	    
+
 	    button .remove{
 		height: 100%;
 		padding: 2px;
 		width: 30px;
 	    }
-	    
+
 	    button.ui-btn{
 		width: auto;
 	    }
-	    
+
 	    .entry {
 		height: 85px;
 		border: solid 1px #ddd;
 		color: #333;
 	    }
-	    
+
 	    .entry .options {
 		float: right;
 	    }
@@ -91,7 +97,7 @@
 </head>
 <body>
     <div data-role="header" data-position="fixed" data-theme="a">
-		<a href="nutrition.html" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+		<a href="login.html" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-gear">Back</a>
         <h1>Grocery List</h1>
     </div><!-- /header -->
 
@@ -100,8 +106,8 @@
     <div class="ui-content" role="main">
 
 <form>
-    <input id="newEntry" placeholder="Add an ingredient..." style="width:90%" />
-    <button id="submit">+</button>
+    <input id="newEntry" placeholder="Add an ingredient..." />
+    <button id="submit"><div class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-plus">Add</div></button>
 </form>
 
 <div id="entries"></div>
@@ -113,7 +119,7 @@
         <button class="up">&#x25B2;</button>
         <button class="down">&#x25BC;</button>
 	</div>
-        <button class="remove">-</button>
+        <button class="remove"><div class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-delete">Remove</div></button>
     </span>
 </div>
 
