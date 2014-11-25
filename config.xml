@@ -77,17 +77,17 @@
 		<icon src="img/favicon.png" gap:platform="ios" width="57" height="57" />
 		<icon src="img/favicon.png" gap:platform="ios" width="72" height="72" />
 		<icon src="img/favicon.png" gap:platform="ios" width="114" height="114" />
-		<icon src="imgs/icons/AppIcon72x72@2x.png" gap:platform="ios" width="144" height="144" />
-		<icon src="imgs/icons/AppIcon76x76@2x.png" gap:platform="ios" width="76" height="76" />
-		<icon src="imgs/icons/AppIcon60x60@2x.png" gap:platform="ios" width="120" height="120" />
-		<icon src="imgs/icons/iTunesArtwork@2x.png" gap:platform="ios" width="152" height="152" />
-		<icon src="imgs/icons/AppIcon40x40.png" gap:platform="android" gap:density="ldpi" />
-		<icon src="imgs/icons/AppIcon50x50.png" gap:platform="android" gap:density="mdpi" />
-		<icon src="img/AppIcon72x72.png" gap:platform="android" gap:density="hdpi" />
-		<icon src="img/AppIcon76x76@2x.png" gap:platform="android" gap:density="xhdpi" />
-		<icon src="imgs/icons/AppIcon72x72@2x.png" gap:platform="android" gap:density="xxhdpi" />
-		<icon src="imgs/icons/iTunesArtwork@2x.png" gap:platform="android" gap:density="xxxhdpi" />
-		<icon src="imgs/icons/AppIcon72x72.png" />
-		<gap:splash src="splash.png" />
+		<icon src="img/icon/AppIcon72x72@2x.png" gap:platform="ios" width="144" height="144" />
+		<icon src="img/icon/AppIcon76x76@2x.png" gap:platform="ios" width="76" height="76" />
+		<icon src="img/icon/AppIcon60x60@2x.png" gap:platform="ios" width="120" height="120" />
+		<icon src="img/icon/iTunesArtwork@2x.png" gap:platform="ios" width="152" height="152" />
+		<icon src="img/icon/AppIcon40x40.png" gap:platform="android" gap:density="ldpi" />
+		<icon src="img/icon/AppIcon50x50.png" gap:platform="android" gap:density="mdpi" />
+		<icon src="img/icon/AppIcon72x72.png" gap:platform="android" gap:density="hdpi" />
+		<icon src="img/icon/AppIcon76x76@2x.png" gap:platform="android" gap:density="xhdpi" />
+		<icon src="img/icon/AppIcon72x72@2x.png" gap:platform="android" gap:density="xxhdpi" />
+		<icon src="img/icon/iTunesArtwork@2x.png" gap:platform="android" gap:density="xxxhdpi" />
+		<icon src="img/icon/AppIcon72x72.png" />
+		<gap:splash src="img/splash.png" />
 
 	</widget>
