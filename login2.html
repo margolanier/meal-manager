@@ -1,282 +1,486 @@
-
 <!DOCTYPE html>
+
 <html>
-	<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Persistent toolbars - jQuery Mobile Demos</title>
-	<link rel="shortcut icon" href="../favicon.ico">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-	<link rel="stylesheet" href="css/themes-default-jquery.mobile-1.4.4.min.css">
-	<link rel="stylesheet" href="css/jqm-demos.css">
-	<link rel="stylesheet" href="css/foundation.css" />
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/styles.css" />
-	
-	<!-- JavaScript files -->
-	<script src="js/main.js"></script>
-	<script src="js/jquery.js"></script>
-	<script src="js/index.js"></script>
-	<script src="js/jquery.mobile-1.4.4.min.js"></script>
-	
-	<script src="https://cdn.firebase.com/v0/firebase-auth-client.js"></script>
-	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
-	
-	<script>
-	  $(document).foundation({
-	    magellan : {
-	      active_class: 'active',
-	      threshold: 0
-	    }
-	  });
-	</script>
-	
-	<script>
-		// this is derived from
-// http://stackoverflow.com/questions/15167981/how-do-i-use-firebase-simple-login-with-email-password/15167983#15167983
+<head>
+		<title>Page Title</title>
+
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 
-// CHANGE THIS to your own firebase
-var ref = new Firebase("https://login-page.firebaseio.com/");
-// then go to your firebase console, click the auth tab, scroll down to 
-// authentication providers, and enable 'email/password'
-// Now enter this in the 'Auth' tab to the left.
-/*
-{
-  "rules": {
-    "users": {
-      "$userid": {
-        ".read": "auth.id == $userid",
-        ".write": "auth.id == $userid"
-      }
-    }
-  }
-}
-*/
-//
+		<script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.0.0/jquery.serialize-object.compiled.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/path.js/0.8.4/path.min.js"></script>
 
-// global user (is this a good thing?)
-myUser = -1;
-
-$(function () {
-    $("#dialog-register").dialog({
-        autoOpen: false,
-        buttons: {
-            "ok": function () {
-
-                var email = $("#register-email").val();
-                var password = $("#register-password").val();
-                authClient.createUser(email, password, function (error, user) {
-                    if (!error) {
-                        console.log('logging new registered user');
-                        doLogin(email, password);
-                    } else {
-                        alert(error);
-                    }
-                });
-
-                $(this).dialog("close");
-            },
-            Cancel: function () {
-                $(this).dialog("close");
-            }
-        }
-    });
-
-    $("#dialog-login").dialog({
-        autoOpen: false,
-        buttons: {
-            "ok": function () {
-                console.log('trying to login: ' + $("#login-email").val());
-
-                var email = $("#login-email").val();
-                var password = $("#login-password").val();
-
-                doLogin(email, password);
-                $(this).dialog("close");
-            },
-            Cancel: function () {
-                $(this).dialog("close");
-            }
-        }
-    });
-
-    $("#opener-register").click(function () {
-        $("#dialog-register").dialog("open");
-    });
-
-    $("#opener-login").click(function () {
-        $("#dialog-login").dialog("open");
-    });
-
-    $("#opener-logout").click(function () {
-        authClient.logout();
-    });
-});
-
-function doLogin(email, password) {
-    authClient.login('password', {
-        email: email,
-        password: password
-    });
-};
-
-var authClient = new FirebaseAuthClient(ref, function (error, user) {
-    if (error) {
-        alert(error);
-        return;
-    }
-    if (user) {
-        // User is already logged in.
-        console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
-        myUser = user;
-        // doLogin(user);
-        console.log('logged in')
-        $("#data").attr('disabled', false);
-        $("#opener-logout").attr('disabled', false);
-        $("#opener-login").attr('disabled', true);
-    } else {
-        // User is logged out.
-        console.log('logged out');
-        $("#data").attr('disabled', true);
-        $("#opener-logout").attr('disabled', true);
-        $("#opener-login").attr('disabled', false);
-        // ("#dialog-form").dialog("open");
-    }
-});
-
-
-
-$('#data').keypress(function (e) {
-    if (e.keyCode == 13) {
-        var data = $('#data').val();
-        console.log(myUser.id);
-        var myRef = new Firebase("https://xxx.firebaseio.com/users/" + myUser.id);
-        myRef.push({
-            data: data
-        });
-        $('#data').val('');
-    }
-});
-	</script>
-	
-	<script>
-		$(function() {
-			$( "[data-role='navbar']" ).navbar();
-			$( "[data-role='header'], [data-role='footer']" ).toolbar();
-		});
-		// Update the contents of the toolbars
-		$( document ).on( "pagecontainerchange", function() {
-			// Each of the four pages in this demo has a data-title attribute
-			// which value is equal to the text of the nav button
-			// For example, on first page: <div data-role="page" data-title="Info">
-			var current = $( ".ui-page-active" ).jqmData( "title" );
-			// Change the heading
-			$( "[data-role='header'] h1" ).text( current );
-			// Remove active class from nav buttons
-			$( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
-			// Add active class to current nav button
-			$( "[data-role='navbar'] a" ).each(function() {
-				if ( $( this ).text() === current ) {
-					$( this ).addClass( "ui-btn-active" );
+		<style>
+				form {
+						display: none;
 				}
-			});
-		});
-	</script>
+		</style>
+
+		<script>
+				(function (jQuery, Firebase, Path) {
+				"use strict";
+
+				// the main firebase reference
+				var rootRef = new Firebase('https://mm-login.firebaseio.com/web/uauth');
+
+				// pair our routes to our form elements and controller
+				var routeMap = {
+						'#/': {
+								form: 'frmLogin',
+								controller: 'login'
+						},
+								'#/logout': {
+								form: 'frmLogout',
+								controller: 'logout'
+						},
+								'#/register': {
+								form: 'frmRegister',
+								controller: 'register'
+						},
+								'#/profile': {
+								form: 'frmProfile',
+								controller: 'profile',
+								authRequired: true // must be logged in to get here
+						},
+				};
+
+				// create the object to store our controllers
+				var controllers = {};
+
+				// store the active form shown on the page
+				var activeForm = null;
+
+				var alertBox = $('#alert');
+
+				function routeTo(route) {
+						window.location.href = '#/' + route;
+				}
+
+				// Handle third party login providers
+				// returns a promise
+				function thirdPartyLogin(provider) {
+						var deferred = $.Deferred();
+
+						rootRef.authWithOAuthPopup(provider, function (err, user) {
+								if (err) {
+										deferred.reject(err);
+								}
+
+								if (user) {
+										deferred.resolve(user);
+								}
+						});
+
+						return deferred.promise();
+				};
+
+				// Handle Email/Password login
+				// returns a promise
+				function authWithPassword(userObj) {
+						var deferred = $.Deferred();
+						console.log(userObj);
+						rootRef.authWithPassword(userObj, function onAuth(err, user) {
+								if (err) {
+										deferred.reject(err);
+								}
+
+								if (user) {
+										deferred.resolve(user);
+								}
+
+						});
+
+						return deferred.promise();
+				}
+
+				// create a user but not login
+				// returns a promsie
+				function createUser(userObj) {
+						var deferred = $.Deferred();
+						rootRef.createUser(userObj, function (err) {
+
+								if (!err) {
+										deferred.resolve();
+								} else {
+										deferred.reject(err);
+								}
+
+						});
+
+						return deferred.promise();
+				}
+
+				// Create a user and then login in
+				// returns a promise
+				function createUserAndLogin(userObj) {
+						return createUser(userObj)
+								.then(function () {
+								return authWithPassword(userObj);
+						});
+				}
+
+				// authenticate anonymously
+				// returns a promise
+				function authAnonymously() {
+						var deferred = $.Deferred();
+						rootRef.authAnonymously(function (err, authData) {
+
+								if (authData) {
+										deferred.resolve(authData);
+								}
+
+								if (err) {
+										deferred.reject(err);
+								}
+
+						});
+
+						return deferred.promise();
+				}
+
+				// route to the specified route if sucessful
+				// if there is an error, show the alert
+				function handleAuthResponse(promise, route) {
+						$.when(promise)
+								.then(function (authData) {
+
+								// route
+								routeTo(route);
+
+						}, function (err) {
+								console.log(err);
+								// pop up error
+								showAlert({
+										title: err.code,
+										detail: err.message,
+										className: 'alert-danger'
+								});
+
+						});
+				}
+
+				// options for showing the alert box
+				function showAlert(opts) {
+						var title = opts.title;
+						var detail = opts.detail;
+						var className = 'alert ' + opts.className;
+
+						alertBox.removeClass().addClass(className);
+						alertBox.children('#alert-title').text(title);
+						alertBox.children('#alert-detail').text(detail);
+				}
+
+				/// Controllers
+				////////////////////////////////////////
+
+				controllers.login = function (form) {
+
+						// Form submission for logging in
+						form.on('submit', function (e) {
+
+								var userAndPass = $(this).serializeObject();
+								var loginPromise = authWithPassword(userAndPass);
+								e.preventDefault();
+
+								handleAuthResponse(loginPromise, 'profile');
+
+						});
+
+						// Social buttons
+						form.children('.bt-social').on('click', function (e) {
+
+								var $currentButton = $(this);
+								var provider = $currentButton.data('provider');
+								var socialLoginPromise;
+								e.preventDefault();
+
+								socialLoginPromise = thirdPartyLogin(provider);
+								handleAuthResponse(socialLoginPromise, 'profile');
+
+						});
+
+						form.children('#btAnon').on('click', function (e) {
+								e.preventDefault();
+								handleAuthResponse(authAnonymously(), 'profilex');
+						});
+
+				};
+
+				// logout immediately when the controller is invoked
+				controllers.logout = function (form) {
+						rootRef.unauth();
+				};
+
+				controllers.register = function (form) {
+
+						// Form submission for registering
+						form.on('submit', function (e) {
+
+								var userAndPass = $(this).serializeObject();
+								var loginPromise = createUserAndLogin(userAndPass);
+								e.preventDefault();
+
+								handleAuthResponse(loginPromise, 'profile');
+
+						});
+
+				};
+
+				controllers.profile = function (form) {
+						// Check the current user
+						var user = rootRef.getAuth();
+						var userRef;
+
+						// If no current user send to register page
+						if (!user) {
+								routeTo('register');
+								return;
+						}
+
+						// Load user info
+						userRef = rootRef.child('users').child(user.uid);
+						userRef.once('value', function (snap) {
+								var user = snap.val();
+								if (!user) {
+										return;
+								}
+
+								// set the fields
+								form.find('#txtName').val(user.name);
+								form.find('#ddlDino').val(user.favoriteDinosaur);
+						});
+
+						// Save user's info to Firebase
+						form.on('submit', function (e) {
+								e.preventDefault();
+								var userInfo = $(this).serializeObject();
+
+								userRef.set(userInfo, function onComplete() {
+
+										// show the message if write is successful
+										showAlert({
+												title: 'Successfully saved!',
+												detail: 'You are still logged in',
+												className: 'alert-success'
+										});
+
+								});
+						});
+
+
+				};
+
+				/// Routing
+				////////////////////////////////////////
+
+				// Handle transitions between routes
+				function transitionRoute(path) {
+						// grab the config object to get the form element and controller
+						var formRoute = routeMap[path];
+						var currentUser = rootRef.getAuth();
+
+						// if authentication is required and there is no
+						// current user then go to the register page and
+						// stop executing
+						if (formRoute.authRequired && !currentUser) {
+								routeTo('register');
+								return;
+						}
+
+						// wrap the upcoming form in jQuery
+						var upcomingForm = $('#' + formRoute.form);
+
+						// if there is no active form then make the current one active
+						if (!activeForm) {
+								activeForm = upcomingForm;
+						}
+
+						// hide old form and show new form
+						activeForm.hide();
+						upcomingForm.show().hide().fadeIn(750);
+
+						// remove any listeners on the soon to be switched form
+						activeForm.off();
+
+						// set the new form as the active form
+						activeForm = upcomingForm;
+
+						// invoke the controller
+						controllers[formRoute.controller](activeForm);
+				}
+
+				// Set up the transitioning of the route
+				function prepRoute() {
+						transitionRoute(this.path);
+				}
+
+
+				/// Routes
+				///  #/         - Login
+				//   #/logout   - Logut
+				//   #/register - Register
+				//   #/profile  - Profile
+
+				Path.map("#/").to(prepRoute);
+				Path.map("#/logout").to(prepRoute);
+				Path.map("#/register").to(prepRoute);
+				Path.map("#/profile").to(prepRoute);
+
+				Path.root("#/");
+
+				/// Initialize
+				////////////////////////////////////////
+
+				$(function () {
+
+						// Start the router
+						Path.listen();
+
+						// whenever authentication happens send a popup
+						rootRef.onAuth(function globalOnAuth(authData) {
+
+								if (authData) {
+										showAlert({
+												title: 'Logged in!',
+												detail: 'Using ' + authData.provider,
+												className: 'alert-success'
+										});
+								} else {
+										showAlert({
+												title: 'You are not logged in',
+												detail: '',
+												className: 'alert-info'
+										});
+								}
+
+						});
+
+				});
+
+		}(window.jQuery, window.Firebase, window.Path))
+		</script>
+
+<script>
+	// we would probably save a profile when we register new users on our site
+	// we could also read the profile to see if it's null
+	// here we will just simulate this with an isNewUser boolean
+	var isNewUser = true;
+	var myRef = new Firebase("https://mm-login.firebaseio.com");
+	var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+		if (error) { ... }
+		else if (user) {
+			if( isNewUser ) {
+				// save new user's profile into Firebase so we can
+				// list users, use them in security rules, and show profiles
+				myRef.child('users').child(user.uid).set({
+					displayName: user.displayName,
+					provider: user.provider,
+					provider_id: user.id
+				});
+			}
+		}
+		else { ... }
+	}
+</script>
+
 </head>
+
 <body>
-    <div data-role="header" data-position="fixed" data-theme="a">
-		<a href="nutrition.html" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
-        <h1>Meal Manager</h1>
-    </div><!-- /header -->
+<header class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
+		<div class="container">
+				<div class="navbar-header">
+						<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"> <span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+						</button> <a href="#" class="navbar-brand">Firebase login</a>
+				</div>
 
-	<div data-role="page" data-title="Meal Manager" id="homeBG">
+				<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+						<ul class="nav navbar-nav">
+								<li> <a href="#/">Login</a>
 
-	    <div class="ui-content" role="main">
-                <div id="title">
-                    <h1>Meal Manager</h1>
-                    <h4>Find new recipes and manage your grocery list.</h4>
-                    <img src="img/fork.png" style="height: 70px;" />
-                  </div>
-                  
-                  <div id="home-pg-button">
-                      <a href="recipes.html" class="button">
-                        <i class="fa fa-shopping-cart fa-2x"></i>
-                        <br>Browse New Recipes
-                      </a>
-                  </div>
-		  
-<a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a">Actions...</a>
-<div data-role="popup" id="popupMenu" data-theme="b">
-        <ul data-role="listview" data-inset="true" style="min-width:210px;">
-            <li data-role="list-divider">Choose an action</li>
-            <li><a href="#">View details</a></li>
-            <li><a href="#">Edit</a></li>
-            <li><a href="#">Disable</a></li>
-            <li><a href="#">Delete</a></li>
-        </ul>
+								</li>
+								<li> <a href="#/logout">Logout</a>
+
+								</li>
+								<li> <a href="#/register">Register</a>
+
+								</li>
+								<li> <a href="#/profile">Profile</a>
+
+								</li>
+						</ul>
+				</nav>
+		</div>
+</header>
+<div id="container" class="container">
+		<!-- LOGIN -->
+		<form id="frmLogin" role="form">
+				<h2>Login</h2>
+
+				<div class="form-group">
+						<label for="txtEmail">Email address</label>
+						<input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+				</div>
+				<div class="form-group">
+						<label for="txtPass">Password</label>
+						<input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+				</div>
+				<button type="submit" class="btn btn-default btn-block">Login</button>
+
+		</form>
+		<!-- / LOGIN -->
+		<!-- LOGOUT -->
+		<form id="frmLogout" role="form">
+				<h2>You are logged out!</h2>
+
+		</form>
+		<!-- / LOGOUT -->
+		<!-- REGISTER -->
+		<form id="frmRegister" role="form">
+				<h2>Register</h2>
+
+				<div class="form-group">
+						<label for="txtRegEmail">Email address</label>
+						<input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+				</div>
+				<div class="form-group">
+						<label for="txtRegPass">Password</label>
+						<input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+				</div>
+				<button type="submit" class="btn btn-default">Register</button>
+		</form>
+		<!-- / REGISTER -->
+		<!-- PROFILE -->
+		<form id="frmProfile" role="form">
+				<h2>Profile</h2>
+
+				<br />
+				<div class="form-group">
+						<label for="txtName">Name</label>
+						<input type="text" class="form-control" id="txtName" placeholder="Name" name="name" />
+				</div>
+				<div class="form-group">
+						<label for="ddlDino">Which recipes do you prefer to cook?</label>
+						<select id="ddlDino" name="favoriteFood" class="form-control">
+								<option>None</option>
+								<option>Southern</option>
+								<option>Mexican</option>
+								<option>Italian</option>
+								<option>Chinese</option>
+								<option>Vegetarian</option>
+						</select>
+				</div>
+				<button type="submit" class="btn btn-primary">Update</button>
+		</form>
+		<!-- / PROFILE -->
+
 </div>
 
-<div data-role="popup" id="popupCloseRight" class="ui-content" style="max-width:280px">
-    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-<p>I have a close button at the top right corner with simple HTML markup.</p>
-</div>
-
-<a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">Add to which day?</a>
-<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
-    <div data-role="header" data-theme="a">
-    <h1>What Day?</h1>
-    </div>
-    <div role="main" class="ui-content">
-        <h4 class="ui-title">What day?</h4>
-    <p>This action cannot be undone.</p>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Delete</a>
-    </div>
-</div>
-
-<!--login test-->
-<div id="dialog-register" title="Register new user">
-    <form>
-        <fieldset>
-            <label for="name">Email</label>
-            <input type="text" name="email" id="register-email" class="text ui-widget-content ui-corner-all" />
-            <label for="password">Password</label>
-            <input type="password" name="password" id="register-password" value="" class="text ui-widget-content ui-corner-all" />
-        </fieldset>
-    </form>
-</div>
-<div id="dialog-login" title="Login user">
-    <form>
-        <fieldset>
-            <label for="name">Email</label>
-            <input type="text" name="email" id="login-email" class="text ui-widget-content ui-corner-all" />
-            <label for="password">Password</label>
-            <input type="password" name="password" id="login-password" value="" class="text ui-widget-content ui-corner-all" />
-        </fieldset>
-    </form>
-</div>
-<button id="opener-register">Register</button>
-<button id="opener-login">Login</button>
-<button id="opener-logout">Logout</button>
-<br />
-<input id="data" />
-
-<!-- end test -->
-
-</div><!-- /content -->
-
-	</div><!-- /page -->
-
-	<div data-role="footer" data-position="fixed" data-theme="a">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="weeklyMenu.html" data-prefetch="true" data-transition="slide">Menu</a></li>
-				<li><a href="planMeals.html" data-prefetch="true" data-transition="fade">Plan</a></li> <!-- transition options = fade, flip, turn, slide -->
-				<li><a href="groceryList.html" data-prefetch="true" data-transition="flip">List</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div><!-- /footer -->
 
 </body>
 </html>

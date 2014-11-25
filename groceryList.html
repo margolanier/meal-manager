@@ -85,9 +85,10 @@
 	    }
 
 	    .entry {
-		height: 85px;
-		border: solid 1px #ddd;
+		min-height: 25px;
+		border-bottom: solid 1px #ddd;
 		color: #333;
+		padding-top: 10px;
 	    }
 
 	    .entry .options {
@@ -110,15 +111,12 @@
     <button id="submit"><div class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-plus">Add</div></button>
 </form>
 
-<div id="entries"></div>
+<hr>
+<div id="entries" ></div>
 
 <div class="entry template">
     <span class="text"></span>
     <span class="options">
-	<div class="order">
-        <button class="up">&#x25B2;</button>
-        <button class="down">&#x25BC;</button>
-	</div>
         <button class="remove"><div class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-delete">Remove</div></button>
     </span>
 </div>
