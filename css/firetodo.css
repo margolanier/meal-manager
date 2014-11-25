@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+}
+
+small {
+  color: #c0c0c0;
+}
+
+.hidden {
+  display: none;
+}
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.todolist {
+  width: 30%;
+  float:left;
+  border: 1px dotted grey;
+}
