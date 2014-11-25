@@ -83,8 +83,8 @@
 		<icon src="imgs/icons/iTunesArtwork@2x.png" gap:platform="ios" width="152" height="152" />
 		<icon src="imgs/icons/AppIcon40x40.png" gap:platform="android" gap:density="ldpi" />
 		<icon src="imgs/icons/AppIcon50x50.png" gap:platform="android" gap:density="mdpi" />
-		<icon src="imgs/icons/AppIcon72x72.png" gap:platform="android" gap:density="hdpi" />
-		<icon src="imgs/icons/AppIcon76x76@2x.png" gap:platform="android" gap:density="xhdpi" />
+		<icon src="img/AppIcon72x72.png" gap:platform="android" gap:density="hdpi" />
+		<icon src="img/AppIcon76x76@2x.png" gap:platform="android" gap:density="xhdpi" />
 		<icon src="imgs/icons/AppIcon72x72@2x.png" gap:platform="android" gap:density="xxhdpi" />
 		<icon src="imgs/icons/iTunesArtwork@2x.png" gap:platform="android" gap:density="xxxhdpi" />
 		<icon src="imgs/icons/AppIcon72x72.png" />
