@@ -187,3 +187,6 @@ ul.off-canvas-list li label{
     color: white;
 }
 
+#submit .ui-btn {
+  color: red;
+}
